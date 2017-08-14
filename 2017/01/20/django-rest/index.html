@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="吃鱼" />
+
+
+
+<meta name="description" content="Serialization 序列化创建专门的序列化的 class 可以帮助 model 序列化1234class SnippetSerializer(serializers.ModelSerializer):    class Meta:        model = Snippet        fields = (&apos;id&apos;, &apos;title&apos;, &apos;code&apos;, &apos;linenos&apos;, &apos;langu">
+<meta name="keywords" content="python,django,restful">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django-restful 框架学习">
+<meta property="og:url" content="http://waitfish.github.io/2017/01/20/django-rest/index.html">
+<meta property="og:site_name" content="美味小鱼的杂货铺">
+<meta property="og:description" content="Serialization 序列化创建专门的序列化的 class 可以帮助 model 序列化1234class SnippetSerializer(serializers.ModelSerializer):    class Meta:        model = Snippet        fields = (&apos;id&apos;, &apos;title&apos;, &apos;code&apos;, &apos;linenos&apos;, &apos;langu">
+<meta property="og:updated_time" content="2017-08-14T09:18:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="django-restful 框架学习">
+<meta name="twitter:description" content="Serialization 序列化创建专门的序列化的 class 可以帮助 model 序列化1234class SnippetSerializer(serializers.ModelSerializer):    class Meta:        model = Snippet        fields = (&apos;id&apos;, &apos;title&apos;, &apos;code&apos;, &apos;linenos&apos;, &apos;langu">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="美味小鱼的杂货铺" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>django-restful 框架学习 | 美味小鱼的杂货铺</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">吃鱼</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">求鱼的各种美味做法,或者好吃的商铺(杭州)</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/restful/">restful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/todo/">todo</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">吃鱼</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">吃鱼</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">求鱼的各种美味做法,或者好吃的商铺(杭州)</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-django-rest" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/20/django-rest/" class="article-date">
+      <time datetime="2017-01-20T00:53:59.000Z" itemprop="datePublished">2017-01-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      django-restful 框架学习
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/restful/">restful</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Serialization-序列化"><a href="#Serialization-序列化" class="headerlink" title="Serialization 序列化"></a>Serialization 序列化</h1><p>创建专门的序列化的 class 可以帮助 model 序列化<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SnippetSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">        model = Snippet</div><div class="line">        fields = (<span class="string">'id'</span>, <span class="string">'title'</span>, <span class="string">'code'</span>, <span class="string">'linenos'</span>, <span class="string">'language'</span>, <span class="string">'style'</span>)</div></pre></td></tr></table></figure></p>
+<p>也可以自己创建序列化的函数,但是官方提供了modelserializer供我们继承</p>
+<h1 id="request-response-对象"><a href="#request-response-对象" class="headerlink" title="request,response 对象"></a>request,response 对象</h1><p>rest 框架重新封装了这2个对象.</p>
+<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p><code>request.post</code>可以得到客户端 post 的数据<br><code>request.data</code>则可以处理 post\put\patch 等方法的数据(推荐使用data)</p>
+<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p><code>response</code>  对象是 <code>TemplateResponse</code>类型,它可以根据内容来决定返回给客户端的数据格式(比如:html 或者json)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> format_suftrom django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> rest_framework.urlpatterns <span class="keyword">import</span> format_suffix_patterns</div><div class="line"><span class="keyword">from</span> snippets <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^snippets/$'</span>, views.snippet_list),</div><div class="line">        url(<span class="string">r'^snippets/(?P&lt;pk&gt;[0-9]+)$'</span>, views.snippet_detail),</div><div class="line">        ]</div><div class="line"></div><div class="line">urlpatterns = format_suffix_patterns(urlpatterns)</div></pre></td></tr></table></figure>
+<p>当客户端是浏览器的时候,就返回html代码,默认返回该格式<br>当客户端指定<code>endpoint</code>的时候就返回相应的格式.<br><code>http://127.0.0.1/user.json</code> 就返回 json<br><code>http://127.0.0.1/user.api</code> 就返回 html<br>客户端也可以在 <code>httpheader</code> 里面指定<code>accept</code>内容,比如<code>appication/json</code> <code>text/html</code></p>
+<a id="more"></a>
+<h1 id="使用-classview"><a href="#使用-classview" class="headerlink" title="使用 classview"></a>使用 classview</h1><p>和<code>django</code>一样,这个框架也有封装好的<code>classview</code>,具体的方法如下:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> snippets.models <span class="keyword">import</span> Snippet</div><div class="line"><span class="keyword">from</span> snippets.serializers <span class="keyword">import</span> SnippetSerializer</div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> Http404</div><div class="line"><span class="keyword">from</span> rest_framework.views <span class="keyword">import</span> APIView</div><div class="line"><span class="keyword">from</span> rest_framework.response <span class="keyword">import</span> Response</div><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> status</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SnippetList</span><span class="params">(APIView)</span>:</span></div><div class="line">    <span class="string">""</span></div><div class="line">    List all snippets, <span class="keyword">or</span> create a new snippet.</div><div class="line">    <span class="string">""</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, request, format=None)</span>:</span></div><div class="line">        snippets = Snippet.objects.all()</div><div class="line">        serializer = SnippetSerializer(snippets, many=<span class="keyword">True</span>)</div><div class="line">        <span class="keyword">return</span> Response(serializer.data)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self, request, format=None)</span>:</span></div><div class="line">        serializer = SnippetSerializer(data=request.data)</div><div class="line">        <span class="keyword">if</span> serializer.is_valid():</div><div class="line">            serializer.save()</div><div class="line">            <span class="keyword">return</span> Response(serializer.data, status=status.HTTP_201_CREATED)</div><div class="line">        <span class="keyword">return</span> Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)<span class="string">"</span></div></pre></td></tr></table></figure></p>
+<h2 id="还有高级的混合类"><a href="#还有高级的混合类" class="headerlink" title="还有高级的混合类"></a>还有高级的混合类</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> snippets.models <span class="keyword">import</span> Snippet</div><div class="line"><span class="keyword">from</span> snippets.serializers <span class="keyword">import</span> SnippetSerializer</div><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> mixins</div><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> generics</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SnippetList</span><span class="params">(mixins.ListModelMixin,</span></span></div><div class="line"><span class="class"><span class="params">    mixins.CreateModelMixin,</span></span></div><div class="line"><span class="class"><span class="params">    generics.GenericAPIView)</span>:</span></div><div class="line">    queryset = Snippet.objects.all()</div><div class="line">    serializer_class = SnippetSerializer</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, request, *args, **kwargs)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.list(request, *args, **kwargs)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self, request, *args, **kwargs)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.create(request, *args, **kwargs)</div></pre></td></tr></table></figure>
+<p>抽象了常见的<code>list\create</code>等方法</p>
+<h2 id="最高级的classbase类"><a href="#最高级的classbase类" class="headerlink" title="最高级的classbase类"></a>最高级的classbase类</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> snippets.models <span class="keyword">import</span> Snippet</div><div class="line"><span class="keyword">from</span> snippets.serializers <span class="keyword">import</span> SnippetSerializer</div><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> generics</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SnippetList</span><span class="params">(generics.ListCreateAPIView)</span>:</span></div><div class="line">    queryset = Snippet.objects.all()</div><div class="line">    serializer_class = SnippetSerializer</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SnippetDetail</span><span class="params">(generics.RetrieveUpdateDestroyAPIView)</span>:</span></div><div class="line">    queryset = Snippet.objects.all()</div><div class="line">    serializer_class = SnippetSerializer</div></pre></td></tr></table></figure>
+<p>使用这个高级的<code>view</code>类,两行代码就完成了 <code>get\put\delete</code>方法,全都浓缩了.</p>
+<h2 id="使用基于类的-url-配置"><a href="#使用基于类的-url-配置" class="headerlink" title="使用基于类的 url 配置"></a>使用基于类的 url 配置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> rest_framework.urlpatterns <span class="keyword">import</span> format_suffix_patterns</div><div class="line"><span class="keyword">from</span> snippets <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^snippets/$'</span>, views.SnippetList.as_view()),</div><div class="line">    url(<span class="string">r'^snippets/(?P&lt;pk&gt;[0-9]+)/$'</span>, views.SnippetDetail.as_view()),</div><div class="line">        ]</div><div class="line"></div><div class="line">urlpatterns = format_suffix_patterns(urlpatterns)</div></pre></td></tr></table></figure>
+<h1 id="认证和权限控制"><a href="#认证和权限控制" class="headerlink" title="认证和权限控制"></a>认证和权限控制</h1><h2 id="对model进行权限控制的时候-需要在model加上django的用户外键"><a href="#对model进行权限控制的时候-需要在model加上django的用户外键" class="headerlink" title="对model进行权限控制的时候,需要在model加上django的用户外键"></a>对<code>model</code>进行权限控制的时候,需要在<code>model</code>加上<code>django</code>的用户外键</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">owner = models.ForeignKey(<span class="string">'auth.User'</span>, related_name=<span class="string">'snippets'</span>, on_delete=models.CASCADE)</div></pre></td></tr></table></figure>
+<p>外键也需要提供默认值,键值是用户<code>id</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">owner = models.ForeignKey(<span class="string">'auth.User'</span>, related_name=<span class="string">'snippets'</span>, on_delete=models.CASCADE,defaut=key)</div></pre></td></tr></table></figure></p>
+<p>访问用户的时候可以看到属于用户的对象信息需要<br>添加用户的序列号文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></div><div class="line">    snippets = serializers.PrimaryKeyRelatedField(many=<span class="keyword">True</span>, queryset=Snippet.objects.all())</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">        model = User</div><div class="line">        fields = (<span class="string">'id'</span>, <span class="string">'username'</span>, <span class="string">'snippets'</span>)</div></pre></td></tr></table></figure>
+<h2 id="关联用户和模块-perform-create"><a href="#关联用户和模块-perform-create" class="headerlink" title="关联用户和模块 perform_create"></a>关联用户和模块 perform_create</h2><p>在对应的<code>model</code>的<code>view</code>类中,添加<code>perform_create</code>方法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">perform_create</span><span class="params">(self, serializer)</span>:</span></div><div class="line">    serializer.save(owner=self.request.user)</div></pre></td></tr></table></figure></p>
+<h2 id="在model的序列化类中添加-用户的信息"><a href="#在model的序列化类中添加-用户的信息" class="headerlink" title="在model的序列化类中添加 用户的信息"></a>在model的序列化类中添加 用户的信息</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">owner = serializers.ReadOnlyField(source=<span class="string">'owner.username'</span>)</div></pre></td></tr></table></figure>
+<p><code>source</code>可以指定需要输出的属性</p>
+<h2 id="基本的权限控制"><a href="#基本的权限控制" class="headerlink" title="基本的权限控制"></a>基本的权限控制</h2><p>从框架中导入默认的权限控制<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> permissions</div></pre></td></tr></table></figure></p>
+<p>在对应的view中添加该属性即可实现基本的权限控制<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">permission_classes = (permissions.IsAuthenticatedOrReadOnly,)</div></pre></td></tr></table></figure></p>
+<h2 id="定制的权限控制"><a href="#定制的权限控制" class="headerlink" title="定制的权限控制"></a>定制的权限控制</h2><p>可以自建一个权限控制的文件,用来控制<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> permissions</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IsOwnerOrReadOnly</span><span class="params">(permissions.BasePermission)</span>:</span></div><div class="line">    <span class="string">""</span></div><div class="line">    Custom permission to only allow owners of an object to edit it.</div><div class="line">    <span class="string">""</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">has_object_permission</span><span class="params">(self, request, view, obj)</span>:</span></div><div class="line">        <span class="string">""</span></div><div class="line">        Read permissions are allowed to any request,</div><div class="line">        so we<span class="string">'ll always allow GET, HEAD or OPTIONS requests.</span></div><div class="line"><span class="string">        ""</span></div><div class="line"><span class="string">        if request.method in permissions.SAFE_METHODS:</span></div><div class="line"><span class="string">            return True</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">        return obj.owner == request.user`</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">permission_classes = (permissions.IsAuthenticatedOrReadOnly,</div><div class="line">                      IsOwnerOrReadOnly,)</div></pre></td></tr></table></figure>
+<h1 id="给api加上超级链接"><a href="#给api加上超级链接" class="headerlink" title="给api加上超级链接"></a>给api加上超级链接</h1><h2 id="修改模块的序列化类"><a href="#修改模块的序列化类" class="headerlink" title="修改模块的序列化类"></a>修改模块的序列化类</h2><p>在序列化的类上继承 <code>HyperlinkedModelSerializer</code>,并使用<code>HyperlinkedRelatedField</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserSerializer</span><span class="params">(serializers.HyperlinkedModelSerializer)</span>:</span></div><div class="line">    snippets = serializers.HyperlinkedRelatedField(many=<span class="keyword">True</span>, view_name=<span class="string">'snippet-detail'</span>, read_only=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">        model = User</div><div class="line">        fields = (<span class="string">'url'</span>, <span class="string">'id'</span>, <span class="string">'username'</span>, <span class="string">'snippets'</span>)</div></pre></td></tr></table></figure>
+<p><strong>需要在 url 配置中添加 name 属性</strong></p>
+<h2 id="列表页面的分页配置"><a href="#列表页面的分页配置" class="headerlink" title="列表页面的分页配置"></a>列表页面的分页配置</h2><p>在项目的<code>setting.py</code>文件中添加下面的属性<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">REST_FRAMEWORK = &#123;</div><div class="line">        <span class="string">'PAGE_SIZE'</span>: <span class="number">10</span></div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<h1 id="viewset-和-router"><a href="#viewset-和-router" class="headerlink" title="viewset 和 router"></a>viewset 和 router</h1><h2 id="终极抽象-view-类-viewset"><a href="#终极抽象-view-类-viewset" class="headerlink" title="终极抽象 view 类,viewset"></a>终极抽象 view 类,viewset</h2><p>和单独的 <code>view</code> 不同的是,<code>viewset</code>抽象了一般的<code>list</code>和<code>detail</code>方法(list\create\retrieve\update\destroy)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> rest_framework.decorators <span class="keyword">import</span> detail_route</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SnippetViewSet</span><span class="params">(viewsets.ModelViewSet)</span>:</span></div><div class="line">    <span class="string">""</span></div><div class="line">    This viewset automatically provides `list`, `create`, `retrieve`,</div><div class="line">    `update` <span class="keyword">and</span> `destroy` actions.</div><div class="line"></div><div class="line">    Additionally we also provide an extra `highlight` action.</div><div class="line">    <span class="string">""</span></div><div class="line">    queryset = Snippet.objects.all()</div><div class="line">    serializer_class = SnippetSerializer</div><div class="line">    permission_classes = (permissions.IsAuthenticatedOrReadOnly,</div><div class="line">    IsOwnerOrReadOnly,)</div><div class="line"></div><div class="line"><span class="meta">    @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">highlight</span><span class="params">(self, request, *args, **kwargs)</span>:</span></div><div class="line">        snippet = self.get_object()</div><div class="line">        <span class="keyword">return</span> Response(snippet.highlighted)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">perform_create</span><span class="params">(self, serializer)</span>:</span></div><div class="line">        serializer.save(owner=self.request.user)<span class="string">"</span></div></pre></td></tr></table></figure>
+<h2 id="抽象的-router"><a href="#抽象的-router" class="headerlink" title="抽象的 router"></a>抽象的 router</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url, include</div><div class="line"><span class="keyword">from</span> snippets <span class="keyword">import</span> views</div><div class="line"><span class="keyword">from</span> rest_framework.routers <span class="keyword">import</span> DefaultRouter</div><div class="line"></div><div class="line"><span class="comment"># Create a router and register our viewsets with it.</span></div><div class="line">router = DefaultRouter()</div><div class="line">router.register(<span class="string">r'snippets'</span>, views.SnippetViewSet)</div><div class="line">router.register(<span class="string">r'users'</span>, views.UserViewSet)</div><div class="line"></div><div class="line"><span class="comment"># The API URLs are now determined automatically by the router.</span></div><div class="line"><span class="comment"># Additionally, we include the login URLs for the browsable API.</span></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^'</span>, include(router.urls)),</div><div class="line">    url(<span class="string">r'^api-auth/'</span>, include(<span class="string">'rest_framework.urls'</span>, namespace=<span class="string">'rest_framework'</span>))</div><div class="line">        ]</div></pre></td></tr></table></figure>
+<h1 id="添加-schema"><a href="#添加-schema" class="headerlink" title="添加 schema"></a>添加 schema</h1><p>安装<code>coreapi</code><br><code>pip install coreapi</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> rest_framework.schemas <span class="keyword">import</span> get_schema_view</div><div class="line"></div><div class="line">schema_view = get_schema_view(title=<span class="string">'Pastebin API'</span>)</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">'^schema/$'</span>, schema_view),</div><div class="line">        ...</div><div class="line">        ]</div></pre></td></tr></table></figure></p>
+<h1 id="官方示例项目地址"><a href="#官方示例项目地址" class="headerlink" title="官方示例项目地址"></a>官方示例项目地址</h1><p>github:<a href="https://github.com/tomchristie/rest-framework-tutorial" target="_blank" rel="external">https://github.com/tomchristie/rest-framework-tutorial</a></p>
+<p>demo  :<a href="http://restframework.herokuapp.com/snippets/" target="_blank" rel="external">http://restframework.herokuapp.com/snippets/</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/20/django-rest/">django-restful 框架学习</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">吃鱼</a></p>
+        <p><span>发布时间:</span>2017-01-20, 08:53:59</p>
+        <p><span>最后更新:</span>2017-08-14, 17:18:54</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/20/django-rest/" title="django-restful 框架学习">http://waitfish.github.io/2017/01/20/django-rest/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://waitfish.github.io/2017/01/20/django-rest/　　作者: 吃鱼" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/01/21/rest-viewset/">
+                    django-restful 的 viewset
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/01/17/setting-of-django/">
+                    setting,开发的基本设置
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Serialization-序列化"><span class="toc-number">1.</span> <span class="toc-text">Serialization 序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#request-response-对象"><span class="toc-number">2.</span> <span class="toc-text">request,response 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#request"><span class="toc-number">2.1.</span> <span class="toc-text">request</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#response"><span class="toc-number">2.2.</span> <span class="toc-text">response</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-classview"><span class="toc-number">3.</span> <span class="toc-text">使用 classview</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#还有高级的混合类"><span class="toc-number">3.1.</span> <span class="toc-text">还有高级的混合类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最高级的classbase类"><span class="toc-number">3.2.</span> <span class="toc-text">最高级的classbase类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用基于类的-url-配置"><span class="toc-number">3.3.</span> <span class="toc-text">使用基于类的 url 配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#认证和权限控制"><span class="toc-number">4.</span> <span class="toc-text">认证和权限控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对model进行权限控制的时候-需要在model加上django的用户外键"><span class="toc-number">4.1.</span> <span class="toc-text">对model进行权限控制的时候,需要在model加上django的用户外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关联用户和模块-perform-create"><span class="toc-number">4.2.</span> <span class="toc-text">关联用户和模块 perform_create</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在model的序列化类中添加-用户的信息"><span class="toc-number">4.3.</span> <span class="toc-text">在model的序列化类中添加 用户的信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本的权限控制"><span class="toc-number">4.4.</span> <span class="toc-text">基本的权限控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定制的权限控制"><span class="toc-number">4.5.</span> <span class="toc-text">定制的权限控制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#给api加上超级链接"><span class="toc-number">5.</span> <span class="toc-text">给api加上超级链接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改模块的序列化类"><span class="toc-number">5.1.</span> <span class="toc-text">修改模块的序列化类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表页面的分页配置"><span class="toc-number">5.2.</span> <span class="toc-text">列表页面的分页配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#viewset-和-router"><span class="toc-number">6.</span> <span class="toc-text">viewset 和 router</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#终极抽象-view-类-viewset"><span class="toc-number">6.1.</span> <span class="toc-text">终极抽象 view 类,viewset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象的-router"><span class="toc-number">6.2.</span> <span class="toc-text">抽象的 router</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加-schema"><span class="toc-number">7.</span> <span class="toc-text">添加 schema</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#官方示例项目地址"><span class="toc-number">8.</span> <span class="toc-text">官方示例项目地址</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"django-restful 框架学习　| 美味小鱼的杂货铺　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/01/21/rest-viewset/" title="上一篇: django-restful 的 viewset">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/01/17/setting-of-django/" title="下一篇: setting,开发的基本设置">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/14/comback/">comback</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/23/todo/">todo 列表</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/rest-viewset/">django-restful 的 viewset</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/django-rest/">django-restful 框架学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/17/setting-of-django/">setting,开发的基本设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/django-002/">django migrate 出错的处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/django-001/">django 学习(1)</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 吃鱼
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
